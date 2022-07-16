@@ -1,19 +1,17 @@
-package com.example.crud;
+package com.example.crud.Dto;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.time.LocalDateTime;
-
-@Entity
 @Getter
+@Builder
 @Setter
-public class Comment {
-    @Id
+public class PostDto {
+
     private long id;
-    private long postId;
+    private String title;
     private String content;
     private LocalDateTime created;
 }
