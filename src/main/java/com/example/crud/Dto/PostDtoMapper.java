@@ -1,4 +1,6 @@
-package com.example.crud;
+package com.example.crud.Dto;
+
+import com.example.crud.Model.Post;
 
 import java.util.List;
 import java.util.stream.Collectors;
