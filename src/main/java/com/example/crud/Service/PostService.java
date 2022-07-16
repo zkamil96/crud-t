@@ -52,6 +52,16 @@ public class PostService {
         return postRepository.save(post);
     }
 
+    public Comment addComment(long id, Comment comment){
+        Post postId = postRepository.findById(id).orElseThrow();
+        if(postId != null){
+            comment.setPostId(id);
+        }else{
+            return null;
+        }
+        return commentRepository.save(comment);
+    }
+
     @Transactional
     public Post editPost(Post post) {
         Post postEdited = postRepository.findById(post.getId()).orElseThrow();
