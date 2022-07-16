@@ -2,8 +2,10 @@ package com.example.crud.Controller;
 
 import com.example.crud.Dto.PostDto;
 import com.example.crud.Dto.PostDtoMapper;
+import com.example.crud.Model.Comment;
 import com.example.crud.Model.Post;
 import com.example.crud.Service.PostService;
+import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -38,9 +40,15 @@ public class PostController {
         return postService.getSinglePost(id);
     }
 
+    @ApiOperation(value = "Add a single post", notes = "Add post")
     @PostMapping("/posts")
-    public Post addPost(@RequestBody Post post){
+    public Post addPost(@RequestBody Post post ){
         return postService.addPost(post);
+    }
+
+    @PostMapping("/posts/{id}/addComment")
+    public Comment addComments(@PathVariable long id, @RequestBody Comment comment){
+            return postService.addComment(id, comment);
     }
 
     @PutMapping("/posts")
